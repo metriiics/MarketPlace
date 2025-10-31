@@ -1,0 +1,107 @@
+/* Контейнер всей страницы */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Верхняя панель */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.header-bar h1 {
+  margin: 0;
+  color: #222;
+}
+
+/* Ссылка на корзину */
+.cart-link {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0077ff;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Эффект при наведении */
+.cart-link:hover {
+  color: #005fd4;
+}
+
+/* 🔹 Подсветка активной корзины */
+.cart-link.active {
+  color: #28a745;
+  animation: pulse 0.6s ease;
+}
+
+/* Анимация пульсации */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Список товаров */
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Карточка товара */
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-info h3 {
+  margin: 0;
+  color: #333;
+}
+
+.desc {
+  color: #666;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.price {
+  font-weight: bold;
+  color: #0077ff;
+}
+
+button {
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #005fd4;
+}
