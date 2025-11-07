@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
 export default function HomeTrade() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState(() => {
@@ -39,6 +38,9 @@ export default function HomeTrade() {
           className={`cart-link ${hasItems ? "active" : ""}`}
         >
           🛒 Корзина ({cart.length})
+        </Link>
+        <Link to="/products/add" className="add-product-link">
+          ➕ Добавить товар
         </Link>
       </div>
 

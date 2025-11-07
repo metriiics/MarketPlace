@@ -41,29 +41,19 @@ class ProductManager:
                 return product
         return None
 
-    def add(self, product: Dict) -> Dict:
-        """Добавляет товар в JSON."""
-        data = self._read()
-        product["id"] = (max([p["id"] for p in data], default=0) + 1)
-        data.append(product)
-        self._write(data)
-        return product
+    def add_product(self, product_data: dict):
+        """Добавляет новый товар."""
+        products = self.get_all()
 
-    def delete(self, product_id: int) -> bool:
-        """Удаляет товар по ID."""
-        data = self._read()
-        new_data = [p for p in data if p["id"] != product_id]
-        if len(data) == len(new_data):
-            return False
-        self._write(new_data)
-        return True
+        # Генерация нового ID
+        new_id = max((p.get("id", 0) for p in products), default=0) + 1
 
-    def update(self, product_id: int, updated_fields: Dict) -> Optional[Dict]:
-        """Обновляет товар по ID."""
-        data = self._read()
-        for product in data:
-            if product["id"] == product_id:
-                product.update(updated_fields)
-                self._write(data)
-                return product
-        return None
+        # Создаём новый товар
+        new_product = {"id": new_id, **product_data}
+
+        # Добавляем и сохраняем
+        products.append(new_product)
+        self._write(products)
+
+        return new_product
+
